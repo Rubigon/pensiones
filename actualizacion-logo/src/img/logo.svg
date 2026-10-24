@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="320" height="64" role="img" aria-label="Pensión Clara">
+  <rect width="64" height="64" rx="14" fill="#0b5c73"/>
+  <path d="M18 40a14 14 0 0 1 28 0z" fill="#ffffff"/>
+  <g stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M32 21v-6"/><path d="M45.4 26.6l4.3-4.3"/><path d="M18.6 26.6l-4.3-4.3"/>
+  </g>
+  <rect x="10" y="43" width="44" height="4" rx="2" fill="#ffffff"/>
+  <rect x="20" y="51" width="24" height="3" rx="1.5" fill="#ffffff" opacity=".55"/>
+  <text x="78" y="42" font-family="Georgia, 'Times New Roman', serif" font-size="32" font-weight="700" fill="#13262f">Pensión <tspan fill="#0b5c73">Clara</tspan></text>
+</svg>
