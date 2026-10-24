@@ -22,7 +22,7 @@ export default function (data) {
   const partes = site.nombre.trim().split(" ");
   const ultima = partes.length > 1 ? partes.pop() : "";
   const marca = `<a class="brand" href="/" aria-label="${esc(site.nombre)}, ir al inicio">
-      <svg class="brand-icon" viewBox="0 0 64 64" width="44" height="44" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#0b5c73"/><path d="M18 40a14 14 0 0 1 28 0z" fill="#fff"/><g stroke="#fff" stroke-width="3" stroke-linecap="round" fill="none"><path d="M32 21v-6"/><path d="M45.4 26.6l4.3-4.3"/><path d="M18.6 26.6l-4.3-4.3"/></g><rect x="10" y="43" width="44" height="4" rx="2" fill="#fff"/><rect x="20" y="51" width="24" height="3" rx="1.5" fill="#fff" opacity=".55"/></svg>
+      <img class="brand-icon" src="/img/logo-circular.png" width="48" height="48" alt="">
       <span class="brand-name">${esc(partes.join(" "))}${ultima ? ` <span class="brand-accent">${esc(ultima)}</span>` : ""}</span></a>`;
   const jsonld = page.url === "/"
     ? `<script type="application/ld+json">${JSON.stringify({ "@context": "https://schema.org", "@type": "WebSite", name: site.nombre, url: site.url.replace(/\/$/, "") + "/", inLanguage: "es" })}</script>`
@@ -39,7 +39,7 @@ export default function (data) {
 <meta name="description" content="${esc(descripcion)}">
 <link rel="canonical" href="${esc(canonical)}">
 ${data.noindex ? '<meta name="robots" content="noindex">' : ""}
-<meta name="theme-color" content="#0b5c73">
+<meta name="theme-color" content="#1b6b45">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/img/icono.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
