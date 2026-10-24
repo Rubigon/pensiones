@@ -26,7 +26,7 @@ npm start        # abre http://localhost:8080 (aquí SÍ se ven los borradores)
 
 ## Cómo funcionan los borradores (importante)
 Todo lo que tiene `draft: true` se ve con `npm start` pero **no se publica** con `npm run build`. Por eso:
-- Las 7 páginas legales y la calculadora vienen como borrador. Rellena los marcadores (`[NOMBRE_Y_APELLIDOS]`, `[NIF]`, `[DOMICILIO]`, `[EMAIL_DE_CONTACTO]`, `[DOMINIO]`, `[FECHA]`) y borra la línea `draft: true` de cada una para publicarla.
+- Las 7 páginas legales y la guía de vida laboral vienen como borrador. Rellena los marcadores (`[NOMBRE_Y_APELLIDOS]`, `[NIF]`, `[DOMICILIO]`, `[EMAIL_DE_CONTACTO]`, `[DOMINIO]`, `[FECHA]`) y borra la línea `draft: true` de cada una para publicarla.
 - Las categorías del menú solo aparecen cuando tienen al menos una guía publicada (no hay páginas vacías).
 - `npm run check` falla si queda algún marcador `[ENTRE_CORCHETES]` sin rellenar en el sitio generado, y avisa si sigues con el dominio provisional.
 
@@ -37,7 +37,7 @@ Todo lo que tiene `draft: true` se ve con `npm start` pero **no se publica** con
 
 ## Antes de publicar nada
 - Pon tu **dominio real** (`SITE_URL`) y tu nombre de autor (`SITE_AUTHOR`).
-- Calculadora: contrasta las reglas de `src/js/calculadora.js` con la Seguridad Social, anota la fecha en `REVISION.fecha` y quita `draft: true` de `src/calculadora-edad-jubilacion.11ty.js`.
+- Calculadora: contrastada con el cuadro oficial de la Seguridad Social el 24-10-2026 (revísala cuando cambie la normativa).
 - Sigue `docs/adsense-checklist.md`. No hay anuncios ni banner de cookies incluidos: hará falta un sistema de consentimiento antes de activar publicidad o analítica.
 
 ## Subir a GitHub

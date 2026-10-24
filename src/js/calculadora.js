@@ -1,26 +1,32 @@
 /*
- * Calculadora orientativa de edad ordinaria de jubilación.
- * Regla general (calendario transitorio). SOLO cubre jubilaciones que se alcancen en 2026 o después.
+ * Calculadora orientativa de edad ordinaria de jubilación (regla general).
+ * Fuente: cuadro de aplicación gradual de la Seguridad Social ("Jubilación ordinaria: requisitos"),
+ * https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963/28393/28396/28472
+ * Contrastado con la página oficial el 24 de octubre de 2026. Revisar cuando cambie la normativa.
  *
- * IMPORTANTE ANTES DE PUBLICAR:
- *  1. Contrastar estos valores con la fuente oficial vigente (seg-social.es y la disposición transitoria
- *     séptima de la LGSS) y anotar la fecha real en REVISION.fecha.
- *  2. Mientras REVISION.fecha esté vacía, la calculadora muestra "datos pendientes de revisión oficial".
- *
- * Valores tomados de fuentes secundarias consultadas en octubre de 2026 (SIN verificar oficialmente):
- *   2026: 65 años si hay >= 38 años y 3 meses cotizados; si no, 66 años y 10 meses.
- *   2027 y siguientes: 65 años si hay >= 38 años y 6 meses cotizados; si no, 67 años.
+ * Todo en meses. TABLA[año] = [meses cotizados para jubilarse a los 65, edad exigida en meses si se cotiza menos].
+ * Criterio aplicado: la edad exigida es la del año en que se produce la jubilación.
  */
 (function () {
   'use strict';
 
-  var REVISION = { fecha: '', fuente: 'https://www.seg-social.es/' };
-  var MIN_CARENCIA_MESES = 15 * 12; // 15 años de cotización mínima
+  var REVISION = {
+    fecha: '24 de octubre de 2026',
+    fuente: 'https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963/28393/28396/28472'
+  };
+  var MIN_CARENCIA_MESES = 15 * 12;
+
+  var TABLA = {
+    2013: [423, 781], 2014: [426, 782], 2015: [429, 783], 2016: [432, 784], 2017: [435, 785],
+    2018: [438, 786], 2019: [441, 788], 2020: [444, 790], 2021: [447, 792], 2022: [450, 794],
+    2023: [453, 796], 2024: [456, 798], 2025: [459, 800], 2026: [459, 802]
+  };
+  var DESDE_2027 = [462, 804]; // 38 años y 6 meses para los 65; si no, 67 años
 
   function regla(anio) {
-    if (anio === 2026) { return { cotizadosParaLos65: 38 * 12 + 3, edadMeses: 66 * 12 + 10 }; }
-    if (anio >= 2027)  { return { cotizadosParaLos65: 38 * 12 + 6, edadMeses: 67 * 12 }; }
-    return null; // antes de 2026: no cubierto
+    if (anio < 2013) { return null; }
+    var r = anio >= 2027 ? DESDE_2027 : TABLA[anio];
+    return { thr: r[0], edad: r[1] };
   }
 
   function addMonths(d, m) {
@@ -39,23 +45,25 @@
 
   function calcular(nac, cotMeses) {
     if (cotMeses < MIN_CARENCIA_MESES) {
-      return { texto: 'Con menos de 15 años cotizados no se alcanza el mínimo para la pensión contributiva de jubilación ordinaria. Puede haber otras vías (por ejemplo, la pensión no contributiva): consulta la Seguridad Social.' };
+      return { texto: 'Con menos de 15 años cotizados no se alcanza el mínimo para la pensión contributiva de jubilación. Puede haber otras vías (por ejemplo, la pensión no contributiva): consulta a la administración.' };
     }
     var f65 = addMonths(nac, 65 * 12);
-    var r65 = regla(f65.getUTCFullYear());
-    if (!r65) { return { texto: 'Tu caso depende de reglas de años anteriores a 2026, que esta calculadora no cubre. Consulta el simulador oficial de la Seguridad Social.' }; }
-    if (cotMeses >= r65.cotizadosParaLos65) {
+    var y65 = f65.getUTCFullYear();
+    var r65 = regla(y65);
+    if (!r65) {
+      return { texto: 'Tu caso depende de reglas anteriores a 2013, que esta calculadora no cubre. Consulta el simulador oficial de la Seguridad Social.' };
+    }
+    if (cotMeses >= r65.thr) {
       return { fecha: f65, texto: 'Podrías jubilarte a los 65 años.' };
     }
-    var f2026 = addMonths(nac, regla(2026).edadMeses);
-    var f2027 = addMonths(nac, regla(2027).edadMeses);
-    if (f2026.getUTCFullYear() === 2026) {
-      return { fecha: f2026, texto: 'Tu edad ordinaria de jubilación sería ' + edadTxt(regla(2026).edadMeses) + '.' };
+    for (var y = y65; y <= y65 + 80; y++) {
+      var ry = regla(y);
+      var f = addMonths(nac, ry.edad);
+      if (f.getUTCFullYear() <= y) {
+        return { fecha: f, texto: 'Tu edad ordinaria de jubilación sería ' + edadTxt(ry.edad) + '.' };
+      }
     }
-    if (f2027.getUTCFullYear() >= 2027) {
-      return { fecha: f2027, texto: 'Tu edad ordinaria de jubilación sería ' + edadTxt(regla(2027).edadMeses) + '.' };
-    }
-    return { texto: 'Tu caso cae en un tramo del calendario que esta calculadora no cubre. Consulta el simulador oficial.' };
+    return { texto: 'No hemos podido calcular tu caso. Consulta el simulador oficial de la Seguridad Social.' };
   }
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -64,7 +72,7 @@
     var out = document.getElementById('pc-result');
     var nota = document.getElementById('pc-nota');
     nota.textContent = REVISION.fecha
-      ? 'Reglas revisadas el ' + REVISION.fecha + '. Fuente: Seguridad Social.'
+      ? 'Cuadro de edades contrastado con la Seguridad Social el ' + REVISION.fecha + '.'
       : 'Datos pendientes de revisión oficial: no los uses para decidir.';
 
     form.addEventListener('submit', function (e) {
@@ -81,7 +89,7 @@
       var r = calcular(new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])), a * 12 + m);
       var html = '<p><strong>' + r.texto + '</strong></p>';
       if (r.fecha) { html += '<p>Fecha orientativa: ' + fmt(r.fecha) + '.</p>'; }
-      html += '<p>No incluye jubilación anticipada, demorada, regímenes especiales, discapacidad ni coeficientes reductores. Comprueba tu caso en el simulador oficial de la <a href="' + REVISION.fuente + '" rel="noopener">Seguridad Social</a>.</p>';
+      html += '<p>No incluye jubilación anticipada, demorada, regímenes especiales, discapacidad ni coeficientes reductores, ni comprueba que tengas 2 de los últimos 15 años cotizados. Confirma tu caso en el simulador oficial de la <a href="' + REVISION.fuente + '" rel="noopener">Seguridad Social</a>.</p>';
       out.innerHTML = html;
     });
   });

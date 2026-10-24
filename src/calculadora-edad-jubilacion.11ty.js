@@ -1,7 +1,6 @@
 import { migas } from "./_includes/lib.js";
 
-// BORRADOR: no se publica con "npm run build" hasta que quites "draft: true"
-// (hazlo cuando hayas contrastado las reglas en src/js/calculadora.js y anotado la fecha real de revisión).
+// Calculadora publicada: reglas contrastadas con la Seguridad Social el 24-10-2026 (ver src/js/calculadora.js).
 export default class {
   data() {
     return {
@@ -9,7 +8,6 @@ export default class {
       title: "Calculadora de edad de jubilación",
       description: "Estimación orientativa de tu edad ordinaria de jubilación según tu fecha de nacimiento y los años cotizados.",
       permalink: "/calculadora-edad-jubilacion/",
-      draft: true,
       scripts: ["/js/calculadora.js"],
     };
   }

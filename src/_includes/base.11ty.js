@@ -10,9 +10,14 @@ export default function (data) {
   const hayCalculadora = todas.some((p) => p.url === "/calculadora-edad-jubilacion/");
   const info = data.collections.info || [];
 
-  const nav = cats
-    .map((c) => `<li><a href="/${c.slug}/"${page.url === `/${c.slug}/` ? ' aria-current="page"' : ""}>${esc(c.nombre)}</a></li>`)
-    .join("") + (hayCalculadora ? `<li><a href="/calculadora-edad-jubilacion/">Calculadora</a></li>` : "");
+  const enlaces = [{ url: "/", nombre: "Inicio" }]
+    .concat(cats.map((c) => ({ url: `/${c.slug}/`, nombre: c.nombre })))
+    .concat([{ url: "/guias/", nombre: "Todas las guías" }])
+    .concat(hayCalculadora ? [{ url: "/calculadora-edad-jubilacion/", nombre: "Calculadora" }] : [])
+    .concat(info.filter((p) => p.url === "/sobre-el-proyecto/").map((p) => ({ url: p.url, nombre: "Sobre el proyecto" })));
+  const nav = enlaces
+    .map((e) => `<li><a href="${e.url}"${page.url === e.url ? ' aria-current="page"' : ""}>${esc(e.nombre)}</a></li>`)
+    .join("");
   const pie = info.map((p) => `<li><a href="${p.url}">${esc(p.data.title)}</a></li>`).join("");
   const scripts = (data.scripts || []).map((s) => `<script src="${s}" defer></script>`).join("\n");
 
@@ -31,10 +36,15 @@ ${data.noindex ? '<meta name="robots" content="noindex">' : ""}
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 <div class="notice-bar"><div class="wrap">Web informativa independiente. No es un sitio oficial ni representa a la Seguridad Social ni a ninguna administración pública.</div></div>
 <header class="site-header">
-  <div class="wrap">
+  <div class="wrap top-row">
     <p class="site-title"><a href="/">${esc(site.nombre)}</a></p>
-    <nav class="main-nav" aria-label="Menú principal"><ul>${nav}</ul></nav>
+    <form role="search" method="get" class="header-search" action="/buscar/">
+      <label class="sr-only" for="hq">Buscar en la web</label>
+      <input type="search" id="hq" name="q" placeholder="Buscar: viudedad, vida laboral…">
+      <button type="submit">Buscar</button>
+    </form>
   </div>
+  <nav class="main-nav" aria-label="Menú principal"><div class="wrap"><ul>${nav}</ul></div></nav>
 </header>
 <main id="contenido">
 ${data.content}
