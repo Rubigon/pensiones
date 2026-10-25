@@ -5,7 +5,7 @@ export default {
   descripcion:
     "Guías claras e independientes sobre jubilación, pensiones y ayudas públicas en España, con fuentes oficiales y fecha de revisión.",
   // Pon aquí tu dominio real (o define la variable de entorno SITE_URL al construir).
-  url: process.env.SITE_URL || "https://TU-DOMINIO.es",
+  url: process.env.SITE_URL || "https://pensionclara.org",
   // El marcador entre corchetes hace que "npm run check" avise hasta que pongas tu nombre real.
   autor: process.env.SITE_AUTHOR || "[NOMBRE_Y_APELLIDOS]",
   categorias: [
