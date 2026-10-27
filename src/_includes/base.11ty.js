@@ -21,6 +21,15 @@ export default function (data) {
   const pie = info.map((p) => `<li><a href="${p.url}">${esc(p.data.title)}</a></li>`).join("");
   const scripts = (data.scripts || []).map((s) => `<script src="${s}" defer></script>`).join("\n");
 
+  const schemaJSON = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": site.nombre,
+    "url": site.url,
+    "description": descripcion,
+    "inLanguage": "es-ES"
+  });
+
   return `<!doctype html>
 <html lang="es">
 <head>
@@ -40,6 +49,11 @@ ${data.noindex ? '<meta name="robots" content="noindex">' : ""}
   gtag('js', new Date());
 
   gtag('config', 'G-FLXCGHPV5Y');
+</script>
+
+<!-- SEO Schema Markup -->
+<script type="application/ld+json">
+${schemaJSON}
 </script>
 </head>
 <body>
