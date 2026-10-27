@@ -31,6 +31,7 @@ export default function (data) {
 <link rel="canonical" href="${esc(canonical)}">
 ${data.noindex ? '<meta name="robots" content="noindex">' : ""}
 <link rel="stylesheet" href="/css/style.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7130325054342047" crossorigin="anonymous"></script>
 </head>
 <body>
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
