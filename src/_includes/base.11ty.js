@@ -39,6 +39,11 @@ export default function (data) {
 <meta name="description" content="${esc(descripcion)}">
 <link rel="canonical" href="${esc(canonical)}">
 ${data.noindex ? '<meta name="robots" content="noindex">' : ""}
+
+<!-- Favicon oficial para la pestaña y Google Search -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+
 <link rel="stylesheet" href="/css/style.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7130325054342047" crossorigin="anonymous"></script>
 <!-- Google tag (gtag.js) -->
@@ -61,7 +66,12 @@ ${schemaJSON}
 <div class="notice-bar"><div class="wrap">Web informativa independiente. No es un sitio oficial ni representa a la Seguridad Social ni a ninguna administración pública.</div></div>
 <header class="site-header">
   <div class="wrap top-row">
-    <p class="site-title"><a href="/">${esc(site.nombre)}</a></p>
+    <p class="site-title">
+      <a href="/" style="display: inline-flex; align-items: center; gap: 8px;">
+        <img src="/favicon.png" alt="Pensión Clara Logo" class="site-logo" width="36" height="36">
+        <span>${esc(site.nombre)}</span>
+      </a>
+    </p>
     <form role="search" method="get" class="header-search" action="/buscar/">
       <label class="sr-only" for="hq">Buscar en la web</label>
       <input type="search" id="hq" name="q" placeholder="Buscar: viudedad, vida laboral…">
