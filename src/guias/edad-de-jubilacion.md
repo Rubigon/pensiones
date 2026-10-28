@@ -1,9 +1,17 @@
 ---
-title: "Edad de jubilación en 2026 y 2027: a qué edad puedes jubilarte"
+layout: articulo.11ty.js
+title: "Tabla de Edad de Jubilación en 2026 y 2027: Requisitos y Cotización"
 description: "Cuadro oficial de la edad ordinaria de jubilación según los años cotizados, con ejemplos para 2026 y 2027 y las excepciones principales."
 categoria: jubilacion
 date: 2026-10-24
 revisado: 2026-10-24
+faq:
+  - pregunta: "¿Cuál es la edad de jubilación en 2026?"
+    respuesta: "En 2026 puedes jubilarte a los 65 años si has cotizado 38 años y 3 meses o más. Si has cotizado menos tiempo, la edad ordinaria es de 66 años y 10 meses."
+  - pregunta: "¿Cuántos años hay que cotizar en 2027 para jubilarse a los 65?"
+    respuesta: "A partir de 2027 se exigirán 38 años y 6 meses cotizados para jubilarse a los 65 años con el 100% de la pensión."
+  - pregunta: "¿Con cuántos años de cotización me puedo jubilar con 15 años cotizados?"
+    respuesta: "Con el mínimo de 15 años cotizados se accede a la pensión contributiva a la edad ordinaria máxima (66 años y 10 meses en 2026 y 67 años a partir de 2027)."
 fuentes:
   - titulo: "Seguridad Social: Jubilación ordinaria, requisitos (edad y período mínimo de cotización)"
     url: "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963/28393/28396/28472"
