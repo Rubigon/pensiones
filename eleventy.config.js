@@ -6,8 +6,11 @@ export default function (eleventyConfig) {
     if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") return false;
   });
 
-  eleventyConfig.addPassthroughCopy({ "src/css": "css", "src/js": "js" });
-
+eleventyConfig.addPassthroughCopy({
+  "src/css": "css",
+  "src/js": "js",
+  "src/favicon.png": "favicon.png"
+});
   // Solo se crean páginas de categoría que tengan guías publicadas (nada de páginas vacías).
   eleventyConfig.addCollection("categoriasConGuias", (api) => {
     const guias = api.getFilteredByTag("guias");
