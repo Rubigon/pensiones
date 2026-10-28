@@ -1,14 +1,17 @@
 ---
-title: "Pensión no contributiva de jubilación en 2026: requisitos y cuantía"
-description: "Requisitos de edad, residencia e ingresos, cuantías de 2026, límites por convivencia y obligaciones de la pensión no contributiva de jubilación, según el IMSERSO."
+layout: articulo.11ty.js
+title: "Pensión No Contributiva de Jubilación: Requisitos y Cuantía"
+description: "Descubre cómo solicitar la pensión no contributiva de jubilación sin haber cotizado 15 años. Requisitos de renta, edad y residencia en España."
 categoria: pensiones
-date: 2026-10-24
-revisado: 2026-10-24
-fuentes:
-  - titulo: "IMSERSO: Pensiones no contributivas de la Seguridad Social 2026 (guía resumen)"
-    url: "https://imserso.es/documents/20123/0/fpnc_2026/d76f3d01-3c8b-9fc5-9ea8-4d7f6dfdcec4"
-  - titulo: "Sede electrónica del IMSERSO: PNC de jubilación"
-    url: "https://sede.imserso.gob.es/es/web/sede-electronica/procedimiento-servicios/detalle/-/asset_publisher/Clv43EZRrpqn/content/pnc-de-jubilacion/20123"
+date: 2026-10-28
+revisado: 2026-10-28
+faq:
+  - pregunta: "¿Quién puede cobrar una pensión no contributiva de jubilación?"
+    respuesta: "Personas de 65 años o más que residan legalmente en España (durante al menos 10 años) y carezcan de ingresos suficientes, aunque no hayan cotizado nunca."
+  - pregunta: "¿Cuántos años hay que haber residido en España para la pensión no contributiva?"
+    respuesta: "Se exigen al menos 10 años de residencia en territorio español entre los 16 años y la fecha de solicitud, de los cuales 2 deben ser consecutivos e inmediatamente anteriores."
+  - pregunta: "¿Es compatible la pensión no contributiva con el trabajo?"
+    respuesta: "Es incompatible con el trabajo remunerado si las rentas superan los límites anuales fijados por la ley para la unidad de convivencia."
 ---
 
 ## Respuesta rápida
