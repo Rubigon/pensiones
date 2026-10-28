@@ -1,14 +1,18 @@
 ---
-title: "Cotización mínima para jubilarse: 15 años y 2 en los últimos 15"
-description: "Qué periodo mínimo de cotización exige la pensión de jubilación contributiva, cómo se acredita y qué ocurre con el tiempo parcial y los fijos discontinuos."
+layout: articulo.11ty.js
+title: "Mínimo 15 Años Cotizados: Requisitos y Cuantía de la Pensión de Jubilación"
+description: "Descubre qué pensión te queda con 15 años cotizados en España, la regla de la doctrina del paréntesis y cómo cumplir el periodo de carencia específica."
 categoria: jubilacion
-date: 2026-10-24
-revisado: 2026-10-24
-fuentes:
-  - titulo: "Seguridad Social: Jubilación ordinaria, requisitos (período mínimo de cotización)"
-    url: "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963/28393/28396/28472"
+date: 2026-10-28
+revisado: 2026-10-28
+faq:
+  - pregunta: "¿Cuánto se cobra de pensión con 15 años cotizados?"
+    respuesta: "Con exactamente 15 años cotizados se tiene derecho al 50% de la base reguladora de la pensión contributiva de jubilación."
+  - pregunta: "¿Qué es el periodo de carencia específica de los 15 años?"
+    respuesta: "Es el requisito que exige que al menos 2 de los 15 años cotizados estén comprendidos dentro de los 15 años inmediatamente anteriores al momento de la jubilación."
+  - pregunta: "¿Qué pasa si tengo 15 años cotizados pero ninguno en los últimos 15 años?"
+    respuesta: "Si no cumples la carencia específica, podrías no acceder a la pensión contributiva a menos que se aplique la doctrina del paréntesis en situaciones de desempleo involuntario."
 ---
-
 ## Respuesta rápida
 
 Para tener derecho a la pensión contributiva de jubilación hace falta haber cotizado **al menos 15 años (5.475 días)** y, de ellos, **al menos 2 años deben estar dentro de los 15 años inmediatamente anteriores** al momento en que se causa la pensión. Además de ese mínimo hay que cumplir la edad de jubilación que corresponda.
