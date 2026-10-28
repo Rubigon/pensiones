@@ -1,12 +1,17 @@
 ---
-title: "Cómo se cuentan los años cotizados para la jubilación"
-description: "Cómo convierte la Seguridad Social los días cotizados en años y meses, qué periodos se suman y cómo cuentan el tiempo parcial y los fijos discontinuos."
+layout: articulo.11ty.js
+title: "Cómo Se Cuentan los Años Cotizados a la Seguridad Social: Días y Cómputo"
+description: "Aprende cómo convierte la Seguridad Social los días trabajados en años y meses cotizados, la integración de lagunas y el cálculo de la pensión."
 categoria: jubilacion
-date: 2026-10-24
-revisado: 2026-10-24
-fuentes:
-  - titulo: "Seguridad Social: Jubilación ordinaria, requisitos (determinación del período cotizado)"
-    url: "https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesTrabajadores/10963/28393/28396/28472"
+date: 2026-10-28
+revisado: 2026-10-28
+faq:
+  - pregunta: "¿Cómo convierte la Seguridad Social los días cotizados en años?"
+    respuesta: "Para el cómputo de la pensión, la Seguridad Social divide los días totales trabajados entre 365 para determinar los años completos de cotización."
+  - pregunta: "¿Qué son las lagunas de cotización y cómo se integran?"
+    respuesta: "Son meses en los que no se ha cotizado. La Seguridad Social rellena los primeros 48 meses sin cotizar con el 100% de la base mínima y los siguientes con el 50%."
+  - pregunta: "¿Cuentan las pagas extraordinarias como días de cotización?"
+    respuesta: "No, las pagas extraordinarias prorrateadas incrementan la base de cotización mensual, pero no añaden días a la vida laboral."
 ---
 
 ## Respuesta rápida
