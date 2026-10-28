@@ -41,8 +41,8 @@ export default function (data) {
 ${data.noindex ? '<meta name="robots" content="noindex">' : ""}
 
 <!-- Favicon oficial para la pestaña y Google Search -->
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/css/favicon.png">
+<link rel="apple-touch-icon" href="/css/favicon.png">
 
 <link rel="stylesheet" href="/css/style.css">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7130325054342047" crossorigin="anonymous"></script>
@@ -68,7 +68,7 @@ ${schemaJSON}
   <div class="wrap top-row">
     <p class="site-title">
       <a href="/" style="display: inline-flex; align-items: center; gap: 8px;">
-        <img src="/favicon.png" alt="Pensión Clara Logo" class="site-logo" width="36" height="36">
+        <img src="/css/favicon.png" alt="Pensión Clara Logo" class="site-logo" width="36" height="36">
         <span>${esc(site.nombre)}</span>
       </a>
     </p>
