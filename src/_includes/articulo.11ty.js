@@ -1,10 +1,10 @@
+import base from "./base.11ty.js";
 import { esc, fechaEs, fechaIso } from "./lib.js";
- 
+
 export default function (data) {
-  const { title, description, content, date, faq, page, site } = data;
-  const canonical = site.url.replace(/\/$/, "") + page.url;
- 
-  // Generar Schema de FAQ en formato JSON-LD si existen preguntas en el frontmatter
+  const { title, description, content, date, faq } = data;
+
+  // 1. Generar Schema JSON-LD de FAQ
   let faqSchemaScript = "";
   if (faq && Array.isArray(faq) && faq.length > 0) {
     const faqSchema = {
@@ -21,8 +21,8 @@ export default function (data) {
     };
     faqSchemaScript = `<script type="application/ld+json">\n${JSON.stringify(faqSchema, null, 2)}\n</script>`;
   }
- 
-  // Generar bloque HTML visible para las preguntas frecuentes al final del artículo
+
+  // 2. Generar bloque HTML de FAQ
   let faqHTML = "";
   if (faq && Array.isArray(faq) && faq.length > 0) {
     const items = faq
@@ -40,8 +40,9 @@ export default function (data) {
         ${items}
       </section>`;
   }
- 
-  return `
+
+  // 3. Contenido completo del artículo
+  const articuloContent = `
   ${faqSchemaScript}
   <article class="articulo-wrap">
     <header class="articulo-header">
@@ -55,4 +56,10 @@ export default function (data) {
     ${faqHTML}
   </article>
   `;
+
+  // 4. Envolver en la plantilla base completa con CSS, Header y Footer
+  return base({
+    ...data,
+    content: articuloContent
+  });
 }
