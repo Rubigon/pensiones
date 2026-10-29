@@ -3,6 +3,8 @@ layout: articulo.11ty.js
 title: "Pensión de Orfandad 2026: Requisitos, Cuantías y Compatibilidades"
 description: "Guía completa y actualizada sobre la pensión de orfandad en España. Límites de edad, cuantías mínimas y compatibilidad con ingresos laborales."
 permalink: "/guias/pension-de-orfandad/index.html"
+categoria: "pensiones"
+revisado: 2026-10-29
 date: 2026-10-29
 ---
 
