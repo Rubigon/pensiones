@@ -112,11 +112,7 @@ h3{font-size:1.25rem;margin:1.6rem 0 .6rem}
 .intro-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(18rem,1fr));gap:1.5rem;margin:2rem 0}
 .intro-grid>div{border-top:4px solid var(--primary);padding-top:.6rem}
 .intro-grid h3{margin-top:.4rem}
-.featured{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem;list-style:none;margin:1.2rem 0;padding:0}
-.featured a{display:block;height:100%;padding:1.1rem 1.2rem;border:1px solid var(--line);border-radius:6px;text-decoration:none;color:var(--ink);background:#fff}
-.featured a:hover{background:var(--surface)}
-.featured strong{display:block;font:700 1.2rem/1.3 var(--serif);color:var(--primary);margin-bottom:.35rem}
-.featured span{font-size:1rem;color:var(--ink-soft)}
+
 .faq details{border:1px solid var(--line);border-radius:6px;padding:.2rem 1.1rem;margin:.6rem 0;background:#fff}
 .faq summary{font-weight:600;cursor:pointer;padding:.75rem 0;min-height:44px}
 .faq details[open] summary{color:var(--primary)}
@@ -124,12 +120,6 @@ h3{font-size:1.25rem;margin:1.6rem 0 .6rem}
 @media (max-width:600px){.header-search{flex:1 1 100%}.main-nav a{padding:.65rem .8rem;font-size:1rem}}
 
 /* --- ESTILOS COMPATIBLES PARA ARTÍCULOS Y GUÍAS (Centrado y visual) --- */
-.articulo-wrap {
-  max-width: var(--read);
-  margin-inline: auto;
-  padding: 2.5rem 1rem;
-}
-
 .articulo-header {
   margin-bottom: 2rem;
   padding-bottom: 1.25rem;
@@ -203,6 +193,63 @@ h3{font-size:1.25rem;margin:1.6rem 0 .6rem}
 
 .faq-item summary:hover {
   color: var(--primary-dark);
+}
+
+/* ==========================================================================
+   Fase 2: Layout centrado, tarjetas de portada y espacios para AdSense
+   ========================================================================== */
+
+/* Ajuste del contenedor principal en monitores grandes */
+.wrap {
+  width: min(100% - 2rem, var(--wrap));
+  margin-inline: auto;
+}
+
+/* Corrección de la cuadrícula para tarjetas destacadas en portada */
+.featured {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  list-style: none;
+  margin: 1.2rem 0;
+  padding: 0;
+  width: 100%;
+}
+
+.featured li {
+  width: 100%;
+}
+
+.featured a {
+  display: block;
+  height: 100%;
+  padding: 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--ink);
+  background: #fff;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.featured a:hover {
+  background: var(--surface);
+  border-color: var(--primary);
+}
+
+/* Ancho amplio para lectura en artículos evitando solapamiento publicitario */
+.articulo-wrap,
+.content-area {
+  max-width: var(--read);
+  margin-inline: auto;
+  padding: 2rem 1rem;
+}
+
+/* Prevenir saltos de diseño (CLS) al cargar anuncios de AdSense */
+.adsbygoogle {
+  min-height: 90px;
+  margin-block: 1.5rem;
+  text-align: center;
 }
 
 /* Banner de cookies: "Aceptar" y "Rechazar" con el mismo peso visual */
