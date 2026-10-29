@@ -3,9 +3,10 @@ layout: articulo.11ty.js
 title: "Ingreso Mínimo Vital (IMV) 2026: Requisitos, Cuantías y Cómo Solicitarlo"
 description: "Guía completa y actualizada sobre el Ingreso Mínimo Vital en España. Requisitos de renta, cuantías según la unidad de convivencia y trámite paso a paso."
 permalink: "/guias/ingreso-minimo-vital/index.html"
+categoria: "pensiones"
+revisado: 2026-10-29
 date: 2026-10-29
 ---
-
 El **Ingreso Mínimo Vital (IMV)** es una prestación económica de la Seguridad Social orientada a prevenir la pobreza y la exclusión social de personas que viven solas o integradas en una unidad de convivencia y que carecen de recursos económicos básicos.
 
 ---
