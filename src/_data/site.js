@@ -12,7 +12,7 @@ export default {
   // RELLÉNALOS con tus datos reales (o define las variables de entorno SITE_NIF, SITE_EMAIL, SITE_DOMICILIO).
   nif: process.env.SITE_NIF || "54702330G",
   email: process.env.SITE_EMAIL || "pensionclara@gmail.com",
-  domicilio: process.env.SITE_DOMICILIO || "Calle Europa, 14, 15007 A Coruña",
+  domicilio: process.env.SITE_DOMICILIO || "A Coruña, España",
   // false = banner de cookies propio (aceptar/rechazar).
   // true  = usas el mensaje europeo del CMP de Google (AdSense > Privacidad y mensajes): se desactiva el banner propio.
   cmpGoogle: false,
