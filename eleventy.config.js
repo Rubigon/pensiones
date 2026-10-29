@@ -6,6 +6,24 @@ export default function (eleventyConfig) {
     if (data.draft && process.env.ELEVENTY_RUN_MODE === "build") return false;
   });
 
+  // Sustituye los marcadores de las páginas legales por los datos de src/_data/site.js
+  eleventyConfig.addTransform("datos-legales", function (content) {
+    const out = (this.page && this.page.outputPath) || this.outputPath || "";
+    if (!String(out).endsWith(".html")) return content;
+    const host = site.url.replace(/^https?:\/\//, "").replace(/\/$/, "");
+    const meses = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
+    const hoy = new Date();
+    const fecha = `${hoy.getDate()} de ${meses[hoy.getMonth()]} de ${hoy.getFullYear()}`;
+    return content
+      .replaceAll("[NOMBRE_Y_APELLIDOS]", site.autor)
+      .replaceAll("[NIF]", site.nif)
+      .replaceAll("[EMAIL_DE_CONTACTO]", site.email)
+      .replaceAll("[DOMICILIO]", site.domicilio)
+      .replaceAll("[DOMINIO]", host)
+      .replaceAll("[NOMBRE_DEL_SITIO]", site.nombre)
+      .replaceAll("[FECHA]", fecha);
+  });
+
   // Copia explícita de assets e imágenes
   eleventyConfig.addPassthroughCopy({
     "src/css": "css",
