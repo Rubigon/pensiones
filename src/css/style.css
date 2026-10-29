@@ -204,3 +204,17 @@ h3{font-size:1.25rem;margin:1.6rem 0 .6rem}
 .faq-item summary:hover {
   color: var(--primary-dark);
 }
+
+/* Banner de cookies: "Aceptar" y "Rechazar" con el mismo peso visual */
+.cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--ink);color:#fff;padding:1rem;box-shadow:0 -2px 12px rgba(0,0,0,.3);font-size:1rem;line-height:1.5}
+.cookie-inner{max-width:var(--wrap);margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem}
+.cookie-msg{flex:1 1 24rem}
+.cookie-msg p{margin:0}
+.cookie-title{font-weight:700;margin-bottom:.25rem!important}
+.cookie-banner a{color:#fff}
+.cookie-actions{display:flex;gap:.75rem;flex:0 0 auto}
+.cookie-btn{background:#fff;color:var(--ink);border:2px solid #fff;padding:.6rem 1.4rem;border-radius:4px;font:700 1rem var(--sans);cursor:pointer;min-width:7.5rem}
+.cookie-btn:hover{background:#e8eef0}
+.cookie-btn:focus-visible{outline:3px solid #8fd3e8;outline-offset:2px}
+.link-btn{background:none;border:0;padding:0;color:#fff;font:inherit;text-decoration:underline;text-underline-offset:.18em;cursor:pointer}
+@media (max-width:600px){.cookie-actions{width:100%}.cookie-btn{flex:1}}

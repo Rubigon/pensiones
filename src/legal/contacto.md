@@ -1,7 +1,6 @@
 ---
 title: Contacto
 order: 4
-draft: true
 ---
 
 Puedes escribirnos a [EMAIL_DE_CONTACTO] para corregir un error, proponer un tema o hacer una consulta sobre la web.

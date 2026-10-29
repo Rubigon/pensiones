@@ -1,32 +1,44 @@
 ---
-title: "Política de Cookies"
-description: "Información detallada sobre el uso de cookies en Pensión Clara y cómo gestionarlas."
+title: Política de cookies
+description: Qué cookies usa Pensión Clara, para qué sirven y cómo aceptarlas, rechazarlas o cambiar tu decisión.
 order: 7
 ---
 
-En **Pensión Clara** utilizamos cookies y tecnologías similares para garantizar el funcionamiento básico del sitio web, analizar el tráfico y mostrar publicidad personalizada de Google AdSense.
+En **[NOMBRE_DEL_SITIO]** usamos cookies y tecnologías similares para recordar tu elección de privacidad, medir las visitas y mostrar publicidad. Las cookies de medición y de publicidad **solo se activan si las aceptas**.
 
-## Cookies que utilizamos en este sitio web
+## Qué es una cookie
 
-| Cookie / Servicio | Finalidad | Duración | Cuándo se activa |
-| :--- | :--- | :--- | :--- |
-| **cookie_consent** | Guarda la preferencia de consentimiento del banner de cookies. | 1 año | Al pulsar "Aceptar" en el banner. |
-| **Google AdSense** (`__gads`, `__gpi`) | Despliegue de publicidad personalizada y análisis del rendimiento publicitario. | 13 meses | Solo si aceptas el banner de cookies. |
-| **Google Analytics** (`_ga`, `_ga_*`) | Análisis anónimo del tráfico y comportamiento de navegación en la web. | 2 años | Solo si aceptas el banner de cookies. |
+Una cookie es un pequeño archivo que se guarda en tu dispositivo cuando visitas una web. Sirve para recordar información, como tus preferencias, o para reconocer tu navegador en visitas posteriores.
 
-## Consentimiento y Gestión de Cookies
+## Cookies y tecnologías que usamos
 
-Las cookies no necesarias (analítica y publicidad de Google) solo se instalan si las aceptas expresamente en el banner de consentimiento que aparece al navegar por la web. 
+| Nombre / servicio | Tipo | Finalidad | Duración | Cuándo se activa |
+| :--- | :--- | :--- | :--- | :--- |
+| **pc_consent_v1** (almacenamiento local) | Técnica, necesaria | Guarda si has aceptado o rechazado las cookies. | Hasta que la borres | Al pulsar «Aceptar» o «Rechazar» |
+| **Google Analytics 4** (`_ga`, `_ga_*`) | Analítica | Estadísticas de visitas y de uso de la web. | Hasta 2 años | Solo si aceptas |
+| **Google AdSense** (`__gads`, `__gpi` y otras de Google) | Publicitaria | Mostrar anuncios, personalizarlos y medir su rendimiento. | Hasta 13 meses | Solo si aceptas |
 
-Puedes borrar o resetear tus preferencias en cualquier momento eliminando las cookies guardadas en tu navegador o haciendo clic en el enlace de configuración del pie de página.
+Las cookies de terceros las gestiona Google. Puedes consultar cómo las usa en [policies.google.com/technologies/cookies](https://policies.google.com/technologies/cookies) y en [policies.google.com/technologies/partner-sites](https://policies.google.com/technologies/partner-sites).
 
-## Cómo desactivar las cookies en tu navegador
+## Cómo aceptar, rechazar o cambiar tu decisión
 
-Puedes permitir, bloquear o eliminar las cookies instaladas en tu equipo mediante la configuración de las opciones de tu navegador de Internet:
+La primera vez que entras en la web aparece un aviso con dos botones: **Aceptar** y **Rechazar**. Si rechazas, no se activa ninguna cookie de analítica ni de publicidad personalizada.
 
-* **Google Chrome**: Configuración > Privacidad y seguridad > Cookies y otros datos de sitios.
-* **Mozilla Firefox**: Ajustes > Privacidad y seguridad > Cookies y datos del sitio.
-* **Safari**: Preferencias > Privacidad.
-* **Microsoft Edge**: Configuración > Permisos del sitio > Cookies y datos del sitio.
+Puedes cambiar de opinión en cualquier momento pulsando **«Configurar cookies»** en el pie de página de cualquier página de la web.
 
-*Última actualización: 28 de octubre de 2026*
+## Cómo borrar o bloquear cookies desde tu navegador
+
+También puedes permitir, bloquear o eliminar las cookies desde la configuración de tu navegador:
+
+* **Google Chrome:** Configuración > Privacidad y seguridad > Cookies y otros datos de sitios.
+* **Mozilla Firefox:** Ajustes > Privacidad y seguridad > Cookies y datos del sitio.
+* **Safari:** Preferencias > Privacidad.
+* **Microsoft Edge:** Configuración > Cookies y permisos del sitio > Cookies y datos del sitio.
+
+Si borras los datos del navegador, volverá a aparecer el aviso y tendrás que elegir de nuevo.
+
+## Más información
+
+Para saber cómo tratamos tus datos personales, consulta la [Política de privacidad](/politica-de-privacidad/).
+
+*Última actualización: [FECHA]*

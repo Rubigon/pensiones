@@ -2,23 +2,29 @@ import { esc } from "./lib.js";
 
 export default function (data) {
   const { site, page } = data;
-  const titulo = data.title ? `${data.title} | ${site.nombre}` : `${site.nombre}: ${site.eslogan}`; const descripcion = data.description \vert{}\vert{} site.descripcion; const canonical = site.url.replace(/\/$/, "") + page.url; const cats = data.collections.categoriasConGuias \vert{}\vert{} []; const todas = data.collections.all \vert{}\vert{} []; const hayCalculadora = todas.some((p) => p.url === "/calculadora-edad-jubilacion/"); const info = data.collections.info \vert{}\vert{} [];  const enlaces = [{ url: "/", nombre: "Inicio" }] .concat(cats.map((c) => ({ url: `/${c.slug}/`, nombre: c.nombre })))
+  const titulo = data.title ? `${data.title} | ${site.nombre}` : `${site.nombre}: ${site.eslogan}`;
+  const descripcion = data.description || site.descripcion;
+  const canonical = site.url.replace(/\/$/, "") + page.url;
+  const cats = data.collections.categoriasConGuias || [];
+  const todas = data.collections.all || [];
+  const hayCalculadora = todas.some((p) => p.url === "/calculadora-edad-jubilacion/");
+  const info = data.collections.info || [];
+
+  const enlaces = [{ url: "/", nombre: "Inicio" }]
+    .concat(cats.map((c) => ({ url: `/${c.slug}/`, nombre: c.nombre })))
     .concat([{ url: "/guias/", nombre: "Todas las guías" }])
     .concat(hayCalculadora ? [{ url: "/calculadora-edad-jubilacion/", nombre: "Calculadora" }] : [])
     .concat(info.filter((p) => p.url === "/sobre-el-proyecto/").map((p) => ({ url: p.url, nombre: "Sobre el proyecto" })));
-  
+
   const nav = enlaces
     .map((e) => `<li><a href="${e.url}"${page.url === e.url ? ' aria-current="page"' : ""}>${esc(e.nombre)}</a></li>`)
     .join("");
 
-  // Enlaces legales del pie de página
-  const pieEnlacesBase = info.map((p) => `<li><a href="${p.url}">${esc(p.data.title)}</a></li>`).join("");
-  const pieEnlacesLegales = `
-    <li><a href="/legal/aviso-legal/">Aviso Legal</a></li>
-    <li><a href="/legal/politica-de-privacidad/">Política de Privacidad</a></li>
-    <li><a href="/legal/politica-de-cookies/">Política de Cookies</a></li>
-  `;
-  const pie = pieEnlacesBase + pieEnlacesLegales;
+  // Pie de página: se construye SOLO con las páginas publicadas (las que están en draft no salen,
+  // y los enlaces siempre coinciden con la URL real de cada página).
+  const pieEnlaces = info.map((p) => `<li><a href="${p.url}">${esc(p.data.title)}</a></li>`).join("");
+  const botonCookies = `<li><button type="button" class="link-btn" id="cookie-settings">Configurar cookies</button></li>`;
+  const pie = pieEnlaces + botonCookies;
 
   const scripts = (data.scripts || []).map((s) => `<script src="${s}" defer></script>`).join("\n");
 
@@ -31,6 +37,37 @@ export default function (data) {
     "inLanguage": "es-ES"
   });
 
+  // Consentimiento (Consent Mode v2): todo denegado por defecto hasta que el usuario acepte.
+  // Si usas el CMP de Google (site.cmpGoogle = true), Google gestiona el banner y esto no se incluye.
+  const consentInicial = site.cmpGoogle ? "" : `
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'denied', wait_for_update: 500
+  });
+  try {
+    var c = JSON.parse(localStorage.getItem('pc_consent_v1'));
+    if (c && c.v === 1 && c.ok) {
+      gtag('consent', 'update', {
+        ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'granted', analytics_storage: 'granted'
+      });
+    }
+  } catch (e) {}
+</script>`;
+
+  const scriptCookies = site.cmpGoogle
+    ? `<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.getElementById('cookie-settings');
+    if (b) b.addEventListener('click', function () {
+      if (window.googlefc && typeof googlefc.showRevocationMessage === 'function') googlefc.showRevocationMessage();
+    });
+  });
+</script>`
+    : `<script src="/js/cookies.js" defer></script>`;
+
   return `<!doctype html>
 <html lang="es">
 <head>
@@ -41,11 +78,12 @@ export default function (data) {
 <link rel="canonical" href="${esc(canonical)}">
 ${data.noindex ? '<meta name="robots" content="noindex">' : ""}
 
-<!-- Favicon oficial para la pestaña y Google Search -->
+<!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="/css/favicon.png">
 <link rel="apple-touch-icon" href="/css/favicon.png">
 
 <link rel="stylesheet" href="/css/style.css">
+${consentInicial}
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7130325054342047" crossorigin="anonymous"></script>
 
 <!-- Google tag (gtag.js) -->
@@ -54,32 +92,7 @@ ${data.noindex ? '<meta name="robots" content="noindex">' : ""}
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-FLXCGHPV5Y');
-</script>
-
-<!-- Banner CMP de Cookies para AdSense / RGPD -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    if (!localStorage.getItem('cookie_consent')) {
-      const banner = document.createElement('div');
-      banner.id = 'cookie-banner';
-      banner.style.cssText = 'position:fixed;bottom:0;left:0;right:0;background:#13262f;color:#fff;padding:1rem;z-index:9999;text-align:center;font-size:0.95rem;box-shadow:0 -2px 10px rgba(0,0,0,0.2);';
-      banner.innerHTML = \`
-        <div style="max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1rem;">
-          <p style="margin:0;text-align:left;flex:1 1 20rem;">Utilizamos cookies propias y de terceros (Google AdSense) para analizar el tráfico y personalizar anuncios. Al navegar por la web aceptas su uso. Consulta nuestra <a href="/legal/politica-de-cookies/" style="color:#fff;text-decoration:underline;">Política de Cookies</a>.</p>
-          <div style="display:flex;gap:0.5rem;">
-            <button id="accept-cookies" style="background:#0b5c73;color:#fff;border:none;padding:0.5rem 1rem;border-radius:4px;cursor:pointer;font-weight:bold;">Aceptar todas</button>
-          </div>
-        </div>
-      \`;
-      document.body.appendChild(banner);
-      document.getElementById('accept-cookies').addEventListener('click', function() {
-        localStorage.setItem('cookie_consent', 'accepted');
-        banner.remove();
-      });
-    }
-  });
 </script>
 
 <!-- SEO Schema Markup -->
@@ -114,4 +127,11 @@ ${data.content}
     <strong>${esc(site.nombre)}</strong>
     <nav aria-label="Información legal y del proyecto"><ul>${pie}</ul></nav>
     <p class="independence">Proyecto independiente de carácter informativo. No representa a la Seguridad Social, al INSS, al IMSERSO ni a ninguna otra administración pública, y no tramita solicitudes. Para cualquier gestión, acude a las sedes oficiales. La información puede cambiar: comprueba siempre la fuente oficial.</p>
-    <p>© ${new Date().getFullYear()}${
+    <p>© ${new Date().getFullYear()} ${esc(site.nombre)}</p>
+  </div>
+</footer>
+${scriptCookies}
+${scripts}
+</body>
+</html>`;
+}

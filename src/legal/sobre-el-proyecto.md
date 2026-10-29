@@ -1,7 +1,6 @@
 ---
 title: Sobre el proyecto
 order: 1
-draft: true
 ---
 
 Esta web es un proyecto informativo e independiente dedicado a explicar, con claridad y rigor, las pensiones, la jubilación, la Seguridad Social y las ayudas públicas en España.

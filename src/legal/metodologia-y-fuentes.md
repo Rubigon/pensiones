@@ -1,7 +1,6 @@
 ---
 title: Metodología y fuentes
 order: 2
-draft: true
 ---
 
 1. Cada guía se basa en fuentes oficiales vigentes (Seguridad Social, IMSERSO, Ministerio de Inclusión, administracion.gob.es, SEPE y el BOE cuando corresponde).

@@ -1,10 +1,9 @@
 ---
 title: Aviso legal
 order: 5
-draft: true
 ---
 
-**Titular:** [NOMBRE_Y_APELLIDOS] — NIF [NIF] — [DOMICILIO] — [EMAIL_DE_CONTACTO].
+**Titular:** [NOMBRE_Y_APELLIDOS] — NIF [NIF] — [DOMICILIO] — [EMAIL_DE_CONTACTO]
 **Sitio web:** [DOMINIO]
 
 **Objeto.** Web de carácter informativo sobre pensiones, jubilación y ayudas públicas en España. No es un sitio oficial ni presta asesoramiento jurídico, fiscal o financiero individualizado.
@@ -15,6 +14,6 @@ draft: true
 
 **Enlaces.** La web enlaza a páginas de terceros (administraciones públicas, principalmente) sobre cuyo contenido no tenemos control.
 
-**Legislación aplicable.** Legislación española. [Revisar con un profesional si procede añadir más cláusulas según tu actividad.]
+**Legislación aplicable.** Legislación española.
 
 Última actualización: [FECHA]
