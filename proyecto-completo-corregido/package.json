@@ -1,0 +1,14 @@
+{
+  "name": "web-pensiones",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Web informativa e independiente sobre pensiones, jubilación y ayudas en España (Eleventy, JavaScript).",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "check": "node scripts/check.js"
+  },
+  "engines": { "node": ">=18" },
+  "devDependencies": { "@11ty/eleventy": "^3.0.0" }
+}
