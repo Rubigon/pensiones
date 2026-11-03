@@ -51,28 +51,28 @@ export default class {
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById("calc-btn");
-    const resultCard = document.getElementById("result-card");
-    const resEdad = document.getElementById("res-edad");
-    const resAnio = document.getElementById("res-anio");
-    const resDesc = document.getElementById("res-desc");
+  document.addEventListener("DOMContentLoaded", function() {
+    var btn = document.getElementById("calc-btn");
+    var resultCard = document.getElementById("result-card");
+    var resEdad = document.getElementById("res-edad");
+    var resAnio = document.getElementById("res-anio");
+    var resDesc = document.getElementById("res-desc");
 
     if (!btn) return;
 
-    btn.addEventListener("click", () => {
-      const anioNac = parseInt(document.getElementById("anio-nac").value) || 1965;
-      const cotiz = parseInt(document.getElementById("anos-cot").value) || 0;
+    btn.addEventListener("click", function() {
+      var anioNac = parseInt(document.getElementById("anio-nac").value) || 1965;
+      var cotiz = parseInt(document.getElementById("anos-cot").value) || 0;
 
-      let edadLegal = "66 años y 10 meses";
-      let exencionAnos = 38.5;
+      var edadLegal = "66 años y 10 meses";
+      var exencionAnos = 38.5;
 
       if (cotiz >= exencionAnos) {
         edadLegal = "65 años";
       }
 
-      const edadAniosNumerico = (cotiz >= exencionAnos) ? 65 : 66.83;
-      const anioEst = Math.floor(anioNac + edadAniosNumerico);
+      var edadAniosNumerico = (cotiz >= exencionAnos) ? 65 : 66.83;
+      var anioEst = Math.floor(anioNac + edadAniosNumerico);
 
       resEdad.textContent = "Edad ordinaria de retiro: " + edadLegal;
       resAnio.textContent = "Año estimado de jubilación: " + anioEst;
