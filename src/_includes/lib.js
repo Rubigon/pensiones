@@ -31,25 +31,24 @@ export function buscador(valor = "") {
     <button type="button" id="clear-search-btn" style="display: none; position: absolute; right: 5rem; background: transparent; border: none; font-size: 1.2rem; color: #64748b; cursor: pointer; padding: 0 0.5rem;" aria-label="Limpiar campo">&times;</button>
     <button type="submit">Buscar</button>
   </div>
-  
   <div id="search-dropdown" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px; margin-top: 6px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); z-index: 100; max-height: 320px; overflow-y: auto; text-align: left;"></div>
 </form>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const input = document.getElementById("q");
-    const clearBtn = document.getElementById("clear-search-btn");
-    const dropdown = document.getElementById("search-dropdown");
+  document.addEventListener("DOMContentLoaded", function() {
+    var input = document.getElementById("q");
+    var clearBtn = document.getElementById("clear-search-btn");
+    var dropdown = document.getElementById("search-dropdown");
     if (!input || !dropdown) return;
 
-    let indexData = [];
+    var indexData = [];
     fetch("/search.json")
-      .then(res => res.json())
-      .then(data => { indexData = data; })
-      .catch(() => {});
+      .then(function(res) { return res.json(); })
+      .then(function(data) { indexData = data; })
+      .catch(function() {});
 
-    input.addEventListener("input", (e) => {
-      const q = e.target.value.toLowerCase().trim();
+    input.addEventListener("input", function(e) {
+      var q = e.target.value.toLowerCase().trim();
       if (clearBtn) clearBtn.style.display = q.length > 0 ? "block" : "none";
 
       if (q.length < 2) {
@@ -57,26 +56,29 @@ export function buscador(valor = "") {
         return;
       }
 
-      const matches = indexData.filter(item => 
-        (item.title && item.title.toLowerCase().includes(q)) ||
-        (item.description && item.description.toLowerCase().includes(q))
-      ).slice(0, 5);
+      var matches = indexData.filter(function(item) {
+        return (item.title && item.title.toLowerCase().indexOf(q) !== -1) ||
+               (item.description && item.description.toLowerCase().indexOf(q) !== -1);
+      }).slice(0, 5);
 
       if (matches.length > 0) {
-        dropdown.innerHTML = matches.map(item => \`
-          <a href="\${item.url}" style="display: block; padding: 0.85rem 1rem; border-bottom: 1px solid #f1f5f9; text-decoration: none; color: #1e293b;">
-            <strong style="display: block; color: #0f172a; font-size: 0.95rem; margin-bottom: 2px;">\${item.title}</strong>
-            <span style="font-size: 0.825rem; color: #64748b; display: block; line-height: 1.3;">\${item.description ? item.description.substring(0, 75) + '...' : ''}</span>
-          </a>
-        \`).join("");
+        var html = "";
+        for (var i = 0; i < matches.length; i++) {
+          var item = matches[i];
+          var desc = item.description ? item.description.substring(0, 75) + "..." : "";
+          html += '<a href="' + item.url + '" style="display: block; padding: 0.85rem 1rem; border-bottom: 1px solid #f1f5f9; text-decoration: none; color: #1e293b;">' +
+                  '<strong style="display: block; color: #0f172a; font-size: 0.95rem; margin-bottom: 2px;">' + item.title + '</strong>' +
+                  '<span style="font-size: 0.825rem; color: #64748b; display: block; line-height: 1.3;">' + desc + '</span></a>';
+        }
+        dropdown.innerHTML = html;
       } else {
-        dropdown.innerHTML = \`<div style="padding: 0.85rem 1rem; color: #64748b; font-size: 0.9rem;">No encontramos guías para "\${esc(q)}".</div>\`;
+        dropdown.innerHTML = '<div style="padding: 0.85rem 1rem; color: #64748b; font-size: 0.9rem;">No encontramos guías para la búsqueda.</div>';
       }
       dropdown.style.display = "block";
     });
 
     if (clearBtn) {
-      clearBtn.addEventListener("click", () => {
+      clearBtn.addEventListener("click", function() {
         input.value = "";
         clearBtn.style.display = "none";
         dropdown.style.display = "none";
@@ -84,5 +86,26 @@ export function buscador(valor = "") {
       });
     }
 
-    document.addEventListener("click", (e) => {
-      if (!input.contains(e.target) && !dropdown.contains(
+    document.addEventListener("click", function(e) {
+      if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.style.display = "none";
+      }
+    });
+  });
+</script>`;
+}
+
+export function migas(items) {
+  const li = items
+    .map((i) => `<li>${i.url ? `<a href="${i.url}">${esc(i.nombre)}</a>` : esc(i.nombre)}</li>`)
+    .join("");
+  return `<nav class="breadcrumbs" aria-label="Migas de pan"><ol>${li}</ol></nav>`;
+}
+
+export function fuentes(lista) {
+  if (!Array.isArray(lista) || !lista.length) return "";
+  const items = lista
+    .map((f) => (f.url ? `<li><a href="${esc(f.url)}" rel="noopener">${esc(f.titulo)}</a></li>` : `<li>${esc(f.titulo)}</li>`))
+    .join("");
+  return `<aside class="sources"><h2>Fuentes oficiales</h2><ul>${items}</ul></aside>`;
+}
