@@ -27,7 +27,7 @@ export function buscador(valor = "") {
   return `<form role="search" method="get" class="search-form" action="/buscar/" autocomplete="off" style="position: relative; max-width: 550px; margin: 0 auto;">
   <label class="sr-only" for="q">Buscar en la web</label>
   <div style="position: relative; display: flex; align-items: center; width: 100%;">
-    <input type="text" id="q" name="q" placeholder="Ej.: pensión de viudedad, vida laboral, IMV…" value="${esc(valor)}" autocomplete="off" aria-autocomplete="list" aria-controls="search-dropdown" style="width: 100%; padding-right: 2.5rem;">
+    <input type="text" id="q" name="q" placeholder="Ej.: pensión de viudedad, vida laboral, IMV…" value="${esc(valor)}" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" aria-autocomplete="list" aria-controls="search-dropdown" style="width: 100%; padding-right: 2.5rem;">
     <button type="button" id="clear-search-btn" style="display: none; position: absolute; right: 5rem; background: transparent; border: none; font-size: 1.2rem; color: #64748b; cursor: pointer; padding: 0 0.5rem;" aria-label="Limpiar campo">&times;</button>
     <button type="submit">Buscar</button>
   </div>
@@ -41,17 +41,21 @@ export function buscador(valor = "") {
     var dropdown = document.getElementById("search-dropdown");
     if (!input || !dropdown) return;
 
+    // Desactivar autocompletado del navegador por JS
+    input.setAttribute("autocomplete", "off");
+
     var indexData = [];
     fetch("/search.json")
       .then(function(res) { return res.json(); })
       .then(function(data) { indexData = data; })
       .catch(function() {});
 
-    // Función para obtener la raíz del término (evita problemas con conjugaciones o plurales)
+    function stripAccents(str) {
+      return (str || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
+
     function getStem(term) {
-      return term.toLowerCase()
-        .normalize("NFD").replace(/[\\u0300-\\u036f]/g, "") // Quita tildes
-        .replace(/(es|s|ar|er|ir|cion|ciones|es)$/, "");   // Quita sufijos comunes
+      return stripAccents(term).replace(/(es|s|ar|er|ir|cion|ciones)$/, "");
     }
 
     input.addEventListener("input", function(e) {
@@ -63,14 +67,13 @@ export function buscador(valor = "") {
         return;
       }
 
+      var qNorm = stripAccents(rawQ);
       var qStem = getStem(rawQ);
-      var qNorm = rawQ.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g, "");
 
       var matches = indexData.filter(function(item) {
-        var titleNorm = (item.title || "").toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g, "");
-        var descNorm = (item.description || "").toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g, "");
+        var titleNorm = stripAccents(item.title);
+        var descNorm = stripAccents(item.description);
 
-        // Coincidencia por término completo o por raíz (stem)
         return titleNorm.indexOf(qNorm) !== -1 || 
                descNorm.indexOf(qNorm) !== -1 ||
                (qStem.length >= 3 && (titleNorm.indexOf(qStem) !== -1 || descNorm.indexOf(qStem) !== -1));
