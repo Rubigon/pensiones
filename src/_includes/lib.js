@@ -24,10 +24,10 @@ export function badgeRevision(v) {
 }
 
 export function buscador(valor = "") {
-  return `<form role="search" method="get" class="search-form" action="/buscar/" style="position: relative; max-width: 550px; margin: 0 auto;">
+  return `<form role="search" method="get" class="search-form" action="/buscar/" autocomplete="off" style="position: relative; max-width: 550px; margin: 0 auto;">
   <label class="sr-only" for="q">Buscar en la web</label>
   <div style="position: relative; display: flex; align-items: center; width: 100%;">
-    <input type="search" id="q" name="q" placeholder="Ej.: pensión de viudedad, vida laboral, IMV…" value="${esc(valor)}" autocomplete="off" style="width: 100%; padding-right: 2.5rem;">
+    <input type="text" id="q" name="q" placeholder="Ej.: pensión de viudedad, vida laboral, IMV…" value="${esc(valor)}" autocomplete="off" aria-autocomplete="list" aria-controls="search-dropdown" style="width: 100%; padding-right: 2.5rem;">
     <button type="button" id="clear-search-btn" style="display: none; position: absolute; right: 5rem; background: transparent; border: none; font-size: 1.2rem; color: #64748b; cursor: pointer; padding: 0 0.5rem;" aria-label="Limpiar campo">&times;</button>
     <button type="submit">Buscar</button>
   </div>
@@ -47,18 +47,33 @@ export function buscador(valor = "") {
       .then(function(data) { indexData = data; })
       .catch(function() {});
 
-    input.addEventListener("input", function(e) {
-      var q = e.target.value.toLowerCase().trim();
-      if (clearBtn) clearBtn.style.display = q.length > 0 ? "block" : "none";
+    // Función para obtener la raíz del término (evita problemas con conjugaciones o plurales)
+    function getStem(term) {
+      return term.toLowerCase()
+        .normalize("NFD").replace(/[\\u0300-\\u036f]/g, "") // Quita tildes
+        .replace(/(es|s|ar|er|ir|cion|ciones|es)$/, "");   // Quita sufijos comunes
+    }
 
-      if (q.length < 2) {
+    input.addEventListener("input", function(e) {
+      var rawQ = e.target.value.trim();
+      if (clearBtn) clearBtn.style.display = rawQ.length > 0 ? "block" : "none";
+
+      if (rawQ.length < 2) {
         dropdown.style.display = "none";
         return;
       }
 
+      var qStem = getStem(rawQ);
+      var qNorm = rawQ.toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g, "");
+
       var matches = indexData.filter(function(item) {
-        return (item.title && item.title.toLowerCase().indexOf(q) !== -1) ||
-               (item.description && item.description.toLowerCase().indexOf(q) !== -1);
+        var titleNorm = (item.title || "").toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g, "");
+        var descNorm = (item.description || "").toLowerCase().normalize("NFD").replace(/[\\u0300-\\u036f]/g, "");
+
+        // Coincidencia por término completo o por raíz (stem)
+        return titleNorm.indexOf(qNorm) !== -1 || 
+               descNorm.indexOf(qNorm) !== -1 ||
+               (qStem.length >= 3 && (titleNorm.indexOf(qStem) !== -1 || descNorm.indexOf(qStem) !== -1));
       }).slice(0, 5);
 
       if (matches.length > 0) {
@@ -72,7 +87,7 @@ export function buscador(valor = "") {
         }
         dropdown.innerHTML = html;
       } else {
-        dropdown.innerHTML = '<div style="padding: 0.85rem 1rem; color: #64748b; font-size: 0.9rem;">No encontramos guías para la búsqueda.</div>';
+        dropdown.innerHTML = '<div style="padding: 0.85rem 1rem; color: #64748b; font-size: 0.9rem;">No encontramos guías para "' + esc(rawQ) + '".</div>';
       }
       dropdown.style.display = "block";
     });
