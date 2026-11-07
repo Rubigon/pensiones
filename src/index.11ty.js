@@ -1,48 +1,66 @@
+import { esc, fechaEs } from "./_includes/lib.js";
+
 export const data = {
   layout: "base.11ty.js",
-  title: "Inicio"
+  title: "Inicio",
+  permalink: "/"
 };
 
-export default function(data) {
-  const guias = data.collections.guias || [];
+export default function (data) {
+  const guias = [...(data.collections.guias || [])].sort((a, b) => b.date - a.date);
+  const cats = data.collections.categoriasConGuias || [];
+  const hayCalculadora = (data.collections.all || []).some((p) => p.url === "/calculadora-edad-jubilacion/");
+  const nombreCat = (slug) => (data.site.categorias.find((c) => c.slug === slug) || {}).nombre || "";
 
-  return `
-    <section class="hero-search">
-      <h2>Información clara sobre pensiones y prestaciones</h2>
-      <p>Guías actualizadas sobre la Seguridad Social, requisitos y trámites paso a paso.</p>
-    </section>
+  const tarjetasCat = cats
+    .map(
+      (c) => `<li><a href="/${c.slug}/" class="card-categoria">
+  <strong>${esc(c.nombre)}</strong>
+  <span>${esc(c.descripcion)}</span>
+  <em>${c.guias.length} ${c.guias.length === 1 ? "guía" : "guías"} →</em>
+</a></li>`
+    )
+    .join("");
 
-    <section class="categorias-destacadas">
-      <h3>Categorías principales</h3>
-      <div class="grid-cards">
-        <a href="/categoria/jubilacion/" class="card-categoria">
-          <h4>Jubilación</h4>
-          <p>Edad, años cotizados y cálculo de la pensión.</p>
-        </a>
-        <a href="/categoria/incapacidad/" class="card-categoria">
-          <h4>Incapacidad</h4>
-          <p>Permanente, temporal y requisitos de cotización.</p>
-        </a>
-        <a href="/categoria/supervivencia/" class="card-categoria">
-          <h4>Viudedad y Orfandad</h4>
-          <p>Pensiones de supervivencia y requisitos.</p>
-        </a>
-        <a href="/categoria/prestaciones/" class="card-categoria">
-          <h4>Ingreso Mínimo Vital</h4>
-          <p>Requisitos, cuantías y solicitudes.</p>
-        </a>
-      </div>
-    </section>
+  const tarjetasGuias = guias
+    .slice(0, 6)
+    .map(
+      (g) => `<li><a href="${g.url}" class="card-guia">
+  <span class="tag">${esc(nombreCat(g.data.categoria))}</span>
+  <strong>${esc(g.data.title)}</strong>
+  ${g.data.description ? `<span class="desc">${esc(g.data.description)}</span>` : ""}
+  <time class="meta">${fechaEs(g.date)}</time>
+</a></li>`
+    )
+    .join("");
 
-    <section class="guias-recientes">
-      <h3>Últimas guías publicadas</h3>
-      <div class="grid-cards">
-        ${guias.slice(0, 6).map(guia => `
-          <a href="${guia.url}" class="card-guia">
-            <h4>${guia.data?.title || 'Leer guía'}</h4>
-          </a>
-        `).join("")}
-      </div>
-    </section>
-  `;
+  return `<section class="hero">
+  <div class="wrap">
+    <h1>Información clara sobre pensiones y prestaciones</h1>
+    <p class="lead">Guías actualizadas sobre la Seguridad Social, requisitos y trámites paso a paso.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="section">
+    <h2 class="group-title">Categorías principales</h2>
+    <ul class="grid-cards grid-cats">${tarjetasCat}</ul>
+  </section>
+
+  ${
+    hayCalculadora
+      ? `<aside class="tool-cta">
+    <h2>Calculadora de edad de jubilación</h2>
+    <p>Comprueba a qué edad podrías jubilarte según tu año de nacimiento y los años cotizados.</p>
+    <a class="btn" href="/calculadora-edad-jubilacion/">Usar la calculadora</a>
+  </aside>`
+      : ""
+  }
+
+  <section class="section">
+    <h2 class="group-title">Últimas guías publicadas</h2>
+    <ul class="grid-cards">${tarjetasGuias}</ul>
+    <p><a class="btn btn-quiet" href="/guias/">Ver todas las guías</a></p>
+  </section>
+</div>`;
 }
