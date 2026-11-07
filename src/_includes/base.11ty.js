@@ -20,8 +20,7 @@ export default function (data) {
     .map((e) => `<li><a href="${e.url}"${page.url === e.url ? ' aria-current="page"' : ""}>${esc(e.nombre)}</a></li>`)
     .join("");
 
-  // Pie de página: se construye SOLO con las páginas publicadas (las que están en draft no salen,
-  // y los enlaces siempre coinciden con la URL real de cada página).
+  // Pie de página: se construye SOLO con las páginas publicadas
   const pieEnlaces = info.map((p) => `<li><a href="${p.url}">${esc(p.data.title)}</a></li>`).join("");
   const botonCookies = `<li><button type="button" class="link-btn" id="cookie-settings">Configurar cookies</button></li>`;
   const pie = pieEnlaces + botonCookies;
@@ -37,8 +36,7 @@ export default function (data) {
     "inLanguage": "es-ES"
   });
 
-  // Consentimiento (Consent Mode v2): todo denegado por defecto hasta que el usuario acepte.
-  // Si usas el CMP de Google (site.cmpGoogle = true), Google gestiona el banner y esto no se incluye.
+  // Consentimiento (Consent Mode v2)
   const consentInicial = site.cmpGoogle ? "" : `
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -71,6 +69,14 @@ export default function (data) {
   return `<!doctype html>
 <html lang="es">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MRSF9RQH');</script>
+<!-- End Google Tag Manager -->
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(titulo)}</title>
@@ -101,6 +107,11 @@ ${schemaJSON}
 </script>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MRSF9RQH"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
 <a class="skip-link" href="#contenido">Saltar al contenido</a>
 <div class="notice-bar"><div class="wrap">Web informativa independiente. No es un sitio oficial ni representa a la Seguridad Social ni a ninguna administración pública.</div></div>
 <header class="site-header">
