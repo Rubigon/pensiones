@@ -265,3 +265,29 @@ h3{font-size:1.25rem;margin:1.6rem 0 .6rem}
 .cookie-btn:focus-visible{outline:3px solid #8fd3e8;outline-offset:2px}
 .link-btn{background:none;border:0;padding:0;color:#fff;font:inherit;text-decoration:underline;text-underline-offset:.18em;cursor:pointer}
 @media (max-width:600px){.cookie-actions{width:100%}.cookie-btn{flex:1}}
+
+/* ==========================================================================
+   Portada: hero, tarjetas de categorías y de guías
+   ========================================================================== */
+.hero .wrap > h1{margin-top:0;color:var(--primary-dark)}
+.hero .search-form{margin:0}
+.hero .search-form > div{width:100%}
+.hero .search-form{max-width:36rem!important;margin:0!important}
+
+.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:1.1rem;list-style:none;margin:1.2rem 0;padding:0}
+.grid-cards li{display:flex}
+.card-categoria,.card-guia{display:flex;flex-direction:column;gap:.35rem;width:100%;padding:1.2rem 1.3rem;border:1px solid var(--line);border-radius:6px;background:#fff;color:var(--ink);text-decoration:none;transition:background-color .15s ease,border-color .15s ease,box-shadow .15s ease}
+.card-categoria{border-left:6px solid var(--primary)}
+.card-categoria strong{font:700 1.25rem/1.25 var(--serif)}
+.card-categoria span{font-size:1rem;color:var(--ink-soft);line-height:1.5}
+.card-categoria em{margin-top:auto;padding-top:.5rem;font-style:normal;font-weight:600;font-size:.95rem;color:var(--primary)}
+.card-guia strong{font:700 1.1rem/1.3 var(--serif)}
+.card-guia .desc{font-size:.95rem;color:var(--ink-soft);line-height:1.5}
+.card-guia .meta{margin-top:auto;padding-top:.5rem}
+.card-guia .tag{align-self:flex-start;font-size:.8rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:var(--primary);background:var(--surface);border-radius:4px;padding:.1rem .5rem}
+.card-categoria:hover,.card-guia:hover{background:var(--surface);border-color:var(--primary);box-shadow:0 2px 8px rgba(11,92,115,.12)}
+.card-categoria:hover strong,.card-guia:hover strong{color:var(--primary-dark)}
+.section + .tool-cta{margin-top:0}
+.tool-cta p{margin:.3rem 0 1rem}
+.grid-cats{grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))}
+.hero{padding-bottom:2.2rem}
