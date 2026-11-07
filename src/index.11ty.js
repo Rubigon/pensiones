@@ -1,4 +1,4 @@
-import { renderHeader, renderFooter, renderCard } from "./_includes/lib.js";
+import { renderHeader, renderFooter } from "./_includes/lib.js";
 
 export default function(data) {
   const site = data.site;
@@ -48,7 +48,11 @@ export default function(data) {
     <section class="guias-recientes">
       <h3>Últimas guías publicadas</h3>
       <div class="grid-cards">
-        ${guias.slice(0, 6).map(guia => renderCard(guia)).join("")}
+        ${guias.slice(0, 6).map(guia => `
+          <a href="${guia.url}" class="card-guia">
+            <h4>${guia.data?.title || 'Leer guía'}</h4>
+          </a>
+        `).join("")}
       </div>
     </section>
   </main>
