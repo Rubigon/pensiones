@@ -1,23 +1,12 @@
-import { renderHeader, renderFooter } from "./_includes/lib.js";
+export const data = {
+  layout: "base.11ty.js",
+  title: "Inicio"
+};
 
 export default function(data) {
-  const site = data.site;
   const guias = data.collections.guias || [];
 
-  return `<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${site.title}</title>
-  <meta name="description" content="${site.description}">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="icon" href="/favicon.png" type="image/png">
-</head>
-<body>
-  ${renderHeader(site, "inicio")}
-
-  <main class="container">
+  return `
     <section class="hero-search">
       <h2>Información clara sobre pensiones y prestaciones</h2>
       <p>Guías actualizadas sobre la Seguridad Social, requisitos y trámites paso a paso.</p>
@@ -55,10 +44,5 @@ export default function(data) {
         `).join("")}
       </div>
     </section>
-  </main>
-
-  ${renderFooter(site)}
-  <script src="/js/buscador.js"></script>
-</body>
-</html>`;
+  `;
 }
