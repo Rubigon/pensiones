@@ -20,7 +20,6 @@ export default function (data) {
     .map((e) => `<li><a href="${e.url}"${page.url === e.url ? ' aria-current="page"' : ""}>${esc(e.nombre)}</a></li>`)
     .join("");
 
-  // Pie de página: se construye SOLO con las páginas publicadas
   const pieEnlaces = info.map((p) => `<li><a href="${p.url}">${esc(p.data.title)}</a></li>`).join("");
   const botonCookies = `<li><button type="button" class="link-btn" id="cookie-settings">Configurar cookies</button></li>`;
   const pie = pieEnlaces + botonCookies;
@@ -36,7 +35,6 @@ export default function (data) {
     "inLanguage": "es-ES"
   });
 
-  // Consentimiento (Consent Mode v2)
   const consentInicial = site.cmpGoogle ? "" : `
 <script>
   window.dataLayer = window.dataLayer || [];
