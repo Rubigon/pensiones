@@ -102,3 +102,29 @@ Cada una de estas modalidades tiene sus propios requisitos y puede reducir el im
 ## Cómo comprobar tu caso
 
 La forma más fiable de saber cuándo puedes jubilarte es usar el simulador de jubilación de la Seguridad Social, que utiliza tu vida laboral real, o consultar directamente a la administración. Esta guía es una explicación general y no sustituye esa comprobación.
+
+---
+
+<section class="faq-section" style="margin-top: 2rem; padding: 1.5rem; background: #0F172A; border-radius: 8px; border: 1px solid #1E293B;">
+  <h3 style="color: #F8FAFC; margin-bottom: 1rem;">Preguntas frecuentes sobre la Edad de Jubilación</h3>
+  
+  <div style="margin-bottom: 1rem;">
+    <h4 style="color: #818CF8; font-size: 1rem; margin-bottom: 0.3rem;">¿Cuál es la edad legal de jubilación en 2026?</h4>
+    <p style="color: #CBD5E1; font-size: 0.95rem;">En 2026 puedes jubilarte a los 65 años si has cotizado 38 años y 3 meses o más. Si has cotizado menos tiempo, la edad ordinaria exigida es de 66 años y 10 meses.</p>
+  </div>
+
+  <div style="margin-bottom: 1rem;">
+    <h4 style="color: #818CF8; font-size: 1rem; margin-bottom: 0.3rem;">¿Cuántos años hay que cotizar a partir de 2027 para jubilarse a los 65?</h4>
+    <p style="color: #CBD5E1; font-size: 0.95rem;">A partir de 2027 se exigirrán 38 años y 6 meses cotizados para retirarse a los 65 años. Quienes no alcancen esa cotización deberán esperar hasta los 67 años.</p>
+  </div>
+
+  <div style="margin-bottom: 1rem;">
+    <h4 style="color: #818CF8; font-size: 1rem; margin-bottom: 0.3rem;">¿Se puede solicitar la jubilación anticipada?</h4>
+    <p style="color: #CBD5E1; font-size: 0.95rem;">Sí, tanto de forma voluntaria (hasta 2 años antes de la edad ordinaria) como involuntaria o forzosa (hasta 4 años antes), aplicándose coeficientes reductores en la cuantía según los meses adelantados.</p>
+  </div>
+
+  <div>
+    <h4 style="color: #818CF8; font-size: 1rem; margin-bottom: 0.3rem;">¿Es posible jubilarse con el mínimo de 15 años cotizados?</h4>
+    <p style="color: #CBD5E1; font-size: 0.95rem;">Sí, pero únicamente al alcanzar la edad ordinaria máxima (66 años y 10 meses en 2026 y 67 años a partir de 2027), cobrando el 50% de la base reguladora.</p>
+  </div>
+</section>
