@@ -7,6 +7,7 @@ categoria: "pensiones"
 revisado: 2026-10-29
 date: 2026-10-29
 ---
+
 El **Ingreso Mínimo Vital (IMV)** es una prestación económica de la Seguridad Social orientada a prevenir la pobreza y la exclusión social de personas que viven solas o integradas en una unidad de convivencia y que carecen de recursos económicos básicos.
 
 ---
@@ -48,10 +49,31 @@ La cuantía del IMV es la diferencia entre la renta garantizada por la ley y el 
 
 ---
 
-## Preguntas frecuentes (FAQ)
+<section class="faq-section" style="margin-top: 2rem; padding: 1.5rem; background: #0F172A; border-radius: 8px; border: 1px solid #1E293B;">
+  <h3 style="color: #F8FAFC; margin-bottom: 1rem;">Preguntas frecuentes sobre el Ingreso Mínimo Vital (IMV)</h3>
+  
+  <div style="margin-bottom: 1rem;">
+    <h4 style="color: #6366F1; font-size: 1rem; margin-bottom: 0.3rem;">¿Quién puede solicitar el Ingreso Mínimo Vital?</h4>
+    <p style="color: #CBD5E1; font-size: 0.95rem;">Pueden solicitarlo aquellas personas que se encuentren en situación de vulnerabilidad económica, residan legalmente en España de forma continuada y reúnan los requisitos exigidos de ingresos y patrimonio (calculados de forma individual o por unidad de convivencia).</p>
+  </div>
 
-### ¿El IMV es compatible con un trabajo?
-Sí, el Ingreso Mínimo Vital es compatible con la obtención de rentas del trabajo o de la actividad económica por cuenta propia, mediante un incentivo al empleo para favorecer la inclusión laboral.
+  <div style="margin-bottom: 1rem;">
+    <h4 style="color: #6366F1; font-size: 1rem; margin-bottom: 0.3rem;">¿Se puede cobrar el IMV si se tiene un trabajo a tiempo parcial o un pequeño salario?</h4>
+    <p style="color: #CBD5E1; font-size: 0.95rem;">Sí. El IMV está diseñado como una ayuda complementaria compatible con rentas del trabajo, siempre que no se superen los umbrales de ingresos máximos establecidos para la unidad familiar.</p>
+  </div>
 
-### ¿Cuánto tarda la Seguridad Social en resolver la solicitud?
-El plazo máximo para resolver y notificar es de 6 meses. Si transcurrido dicho plazo no se ha recibido resolución expresa, la solicitud se entiende desestimada por silencio administrativo.
+  <div style="margin-bottom: 1rem;">
+    <h4 style="color: #6366F1; font-size: 1rem; margin-bottom: 0.3rem;">¿Cómo se comprueban los ingresos y el patrimonio para la concesión?</h4>
+    <p style="color: #CBD5E1; font-size: 0.95rem;">La Seguridad Social realiza el estudio económico tomando como referencia general los ingresos del año natural anterior. No obstante, si la situación de vulnerabilidad ha sobrevenido en el año en curso, en determinados supuestos se pueden valorar los ingresos actuales.</p>
+  </div>
+
+  <div style="margin-bottom: 1rem;">
+    <h4 style="color: #6366F1; font-size: 1rem; margin-bottom: 0.3rem;">¿Cuánto tarda la Seguridad Social en resolver la solicitud?</h4>
+    <p style="color: #CBD5E1; font-size: 0.95rem;">El plazo máximo para resolver y notificar es de 6 meses. Si transcurrido dicho plazo no se ha recibido resolución expresa, la solicitud se entiende desestimada por silencio administrativo.</p>
+  </div>
+
+  <div>
+    <h4 style="color: #6366F1; font-size: 1rem; margin-bottom: 0.3rem;">¿Qué pasa si me mudo de comunidad autónoma mientras percibo la ayuda?</h4>
+    <p style="color: #CBD5E1; font-size: 0.95rem;">El Ingreso Mínimo Vital es una prestación de ámbito estatal. Un cambio de residencia dentro de España no extingue el derecho, pero sí debes comunicarlo a la Seguridad Social para actualizar los datos de tu expediente.</p>
+  </div>
+</section>
