@@ -19,7 +19,7 @@ Para tener derecho a la prestación del Ingreso Mínimo Vital se deben cumplir l
 1. **Residencia legal y efectiva en España**: Haber residido de forma continuada e ininterrumpida durante al menos un año inmediatamente anterior a la solicitud.
 2. **Estar en situación de vulnerabilidad económica**: Se comprueba la capacidad económica de la persona o de la unidad de convivencia atendiendo al nivel de ingresos y al patrimonio.
 3. **Edad mínima**: Tener entre 23 y 65 años (salvo excepciones como unidades de convivencia con menores a cargo o jóvenes procedentes de centros de protección).
-4. **Haber agotado las prestaciones de carácter contributivo o no contributivo** a las que se tuviera derecho.
+4. **Haber agotado las prestaciones de carácter contributivo o no contributivo** a las que se tuviera derecho (como la prestación por [incapacidad temporal o baja médica](/guias/incapacidad-temporal/)).
 
 ---
 
