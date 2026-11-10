@@ -2,7 +2,7 @@
 layout: articulo.11ty.js
 title: "Guía de Incapacidad Permanente en 2026: Grados, Requisitos y Cuantías"
 description: "Explicación completa sobre la incapacidad permanente en España: grados (parcial, total, absoluta y gran invalidez), requisitos de cotización y cómo se calcula la pensión."
-categoria: incapacidad
+categoria: "tramites"
 date: 2026-10-24
 revisado: 2026-10-24
 ---
